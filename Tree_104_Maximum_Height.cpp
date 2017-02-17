@@ -7,6 +7,12 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+/*
+pre_order: stack
+in_order: back_track, stack;
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -19,14 +25,7 @@ struct TreeNode {
 };
 
 #include <stack>
-template <typename Datatype>
-class Queue {
-public:
-	empty
-private:
-	int size;
-
-}
+#include <queue>
 
 class Solution {
 public:
