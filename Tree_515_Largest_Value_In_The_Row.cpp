@@ -3,6 +3,14 @@
 #include <iostream>
 using namespace std;
 
+/* 
+    
+    Bfs 可解， DFS也可解。
+
+    类似： 104
+
+*/
+
 struct TreeNode {
      int val;
      TreeNode *parent;
@@ -13,7 +21,7 @@ struct TreeNode {
 
 class Solution {
 public:
-    vector<int> largestValues(TreeNode* root) {
+    vector<int> largestValues_BFS(TreeNode* root) {
         if(!root) return vector<int>();
         queue<TreeNode*> stk;
         stk.push(root);
@@ -43,6 +51,20 @@ public:
         }
         max_value_array.push_back(current_max);
         return max_value_array;
+    }
+
+    vector<int> largestValues(TreeNode* node){
+        vector<int> max_value_array = vector<int>();
+        largestValues_helper(node, max_value_array, 0);
+        return max_value_array;
+    }
+
+    void largestValues_helper(TreeNode* node, vector<int>& max_array, int level){
+        if(!node) return;
+        if(max_array.size()>level) max_array[level] = max_array[level] >= node->val ? max_array[level] : node->val;
+        else max_array.push_back(node->val);
+        largestValues_helper(node->left, max_array, level+1);
+        largestValues_helper(node->right, max_array, level+1); 
     }
 };
 
